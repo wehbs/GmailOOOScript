@@ -5,7 +5,7 @@ function autoReply() {
   var hour = date.getHours();
   var noReply = ["ls@compass.com", "feedback@compass.com", "jenkins@compass.com", "shamirwehbe@me.com", "shamirwehbe@yahoo.com"];
   var fromEmails = [];
-  
+  var yesReply
   
   var replyMessage = "Hello!\n\nYou have reached me during non business hours. I will respond by 9 AM next business day.\n\nIf you have any Compass.com related questions, check out Compass Academy! Learn about Compass' tools and get your questions answered at academy.compass.com.\n\nBest,\n\nShamir Wehbe";
   
@@ -19,18 +19,20 @@ function autoReply() {
       var messagesFrom = threads[i].getMessages()[0].getFrom();
       var email = messagesFrom.substring(messagesFrom.lastIndexOf("<") + 1, messagesFrom.lastIndexOf(">"));
       fromEmails.push(email);
-                 
-      var yesReply = fromEmails.filter(function(e) {
+            
+      yesReply = fromEmails.filter(function(e) {
         return noReply.indexOf(e) ==-1;});
       
       for (var e = 0; e < yesReply.length; e++) {
-      
-         if (threads[i].isUnread() && fromEmails == yesReply[e]){
+        for (var y = 0; y < fromEmails.length; y++) {
+        
+         if (threads[i].isUnread() && fromEmails[y] == yesReply[e]){
             
             threads[i].reply(replyMessage);
             threads[i].markRead();
             threads[i].addLabel(label);
          }
+        }
       }      	      
     }    
   } 
