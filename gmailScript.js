@@ -22,16 +22,16 @@ function autoReply() {
             
       yesReply = fromEmails.filter(function(e) {
         return noReply.indexOf(e) ==-1;});
+          
       
-      for (var e = 0; e < yesReply.length; e++) {
         for (var y = 0; y < fromEmails.length; y++) {
         
-         if (threads[i].isUnread() && fromEmails[y] == yesReply[e]){
+         if (threads[i].isUnread() && yesReply.indexOf(fromEmails[y]) > -1){
             
             threads[i].reply(replyMessage);
             threads[i].markRead();
             threads[i].addLabel(label);
-         }
+         
         }
       }      	      
     }    
