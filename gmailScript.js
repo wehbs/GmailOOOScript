@@ -12,6 +12,7 @@ function autoReply() {
                  "msaewitz@compass.com",
                  "elyssa.holzer@compass.com",
                  "sara.collette@compass.com",
+                 "jeff.polashuk@compass.com",
                  "lookernotification@compass.com",
                  "productexperts-all@compass.com",
                  "regionalopssurvey@compass.com"];
